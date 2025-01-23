@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Roboto+Slab:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Caprasimo&family=Roboto+Slab:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: "Roboto Slab", sans-serif;
   line-height: 1.5;
 
   color: #ebe7ef;
@@ -17,14 +17,13 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-
 body {
   background: radial-gradient(
       circle at top,
       rgba(241, 210, 70, 0.98),
       rgba(250, 176, 103, 0.87)
     ),
-    url('bg-pattern-dark.png');
+    url("bg-pattern-dark.png");
   background-repeat: repeat;
   background-size: 100% 100%, 30% 30%, 100% 100%;
   min-height: 110rem;
@@ -42,7 +41,7 @@ header img {
 }
 
 h1 {
-  font-family: 'Caprasimo', cursive;
+  font-family: "Caprasimo", cursive;
   font-size: 3rem;
   margin: 0 auto 3rem auto;
   color: #3f3b00;
@@ -66,13 +65,18 @@ h1 {
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  flex-direction: row;
 }
 
 #players li {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
   width: 50%;
+  height: auto;
   border: 2px solid transparent;
+  /* background: white; */
 }
 
 #players.highlight-player li.active {
@@ -86,10 +90,11 @@ h1 {
 }
 
 #players button {
-  width: 3rem;
+  width: 10vw;
+  /* background: #ebe7ef; */
   border: none;
-  background: none;
   color: #c3ba78;
+  background: none;
   font-size: 0.9rem;
   cursor: pointer;
   transition: color 0.2s;
@@ -102,23 +107,25 @@ h1 {
 }
 
 .player {
+  width: 100%;
   border: 2px solid transparent;
-  padding: 0.5rem;
   border-radius: 4px;
   font-weight: bold;
+  display: flex; /* Enable Flexbox */
+  flex-direction: row; /* Horizontal layout (default) */
+  justify-content: space-between; /* Distribute children: one at start, one at end */
+  align-items: center; /* Vertically center children */
 }
 
 .player-name {
-  display: inline-block;
-  width: 10rem;
+  /* display: inline-block; */
+  width: 60%;
   font-size: 1rem;
   color: #e1dec7;
   text-transform: uppercase;
-  margin: 0;
-  padding: 0.5rem;
   border-radius: 4px;
   text-overflow: ellipsis;
-  text-align: center;
+  text-align: left; /* Align text to the left */
 }
 
 .player input {
@@ -134,7 +141,7 @@ h1 {
 }
 
 .player-symbol {
-  margin-left: 1rem;
+  align-self: center; /* Vertically center (if needed) */
   font-size: 1rem;
   color: #e1dec7;
 }
@@ -154,15 +161,14 @@ ol {
   background: none;
   color: #f8c031;
   border: none;
-  font-family: 'Caprasimo', cursive;
+  font-family: "Caprasimo", cursive;
   font-size: 4rem;
   text-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
   animation: pulse-text-size 2s infinite ease-out;
 }
 
 #game-board {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   justify-content: center;
   gap: 2rem;
   margin: 3rem 0;
@@ -170,9 +176,15 @@ ol {
   flex-direction: column;
 }
 
+#row {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+}
+
 #game-board ol {
   display: flex;
-  flex-wrap: wrap;
+  width: fit-content;
   justify-content: center;
   gap: 2rem;
   margin: 0;
@@ -180,15 +192,22 @@ ol {
 }
 
 #game-board button {
-  width: 8rem;
-  height: 8rem;
+  width: 10vw;
+  height: 10vw;
   border: none;
   background: #aca788;
-  color: #3f3b00;
-  font-size: 5rem;
+  color: yellow;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-size: 3vw;
   cursor: pointer;
-  font-family: 'Caprasimo', cursive;
-  padding: 1rem;
+  font-family: "Caprasimo", cursive;
+  text-shadow: 0 0 12px rgb(255, 182, 86);
+}
+
+#playersymbol {
+  position: inherit;
 }
 
 #game-over {
@@ -206,7 +225,7 @@ ol {
 }
 
 #game-over h2 {
-  font-family: 'Caprasimo', cursive;
+  font-family: "Caprasimo", cursive;
   font-size: 4rem;
   text-align: center;
   color: #fcd256;
@@ -266,7 +285,7 @@ ol {
 }
 
 #game-hints h2 {
-  font-family: 'Caprasimo', cursive;
+  font-family: "Caprasimo", cursive;
   font-size: 2rem;
   margin: 0;
 }
@@ -284,6 +303,58 @@ ol {
   color: #23221f;
   font: inherit;
   margin-top: 1.5rem;
+}
+
+
+#players li button {
+  align-self: center;
+}
+
+@media  (max-width: 600px) {
+  #game-container {
+    width: 90%;
+  }
+  
+  #players {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  #players li {
+    align-items: flex-start;
+  }
+
+  #players li span {
+    font-size: 3vw;
+  }
+
+  .player-name {
+    font-size: smaller;
+    margin-right: 0;
+    display: flex;
+    padding: 0;
+  }
+
+  .player-symbol {
+    display: flex;
+    margin: 0;
+  }
+
+  #players button{
+    margin: 0;
+    padding: 0;
+    width: 3vw;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
 }
 
 @keyframes slide-in-from-left {
